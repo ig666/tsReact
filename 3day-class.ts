@@ -17,7 +17,7 @@ const add = function (x: number, y: number, z: number = 10): number {
 
 const add2: (x: number, y: number) => number = add;
 
-let str = "str"; //类型推断
+let strs = "str"; //类型推断
 
 //  class.ts
 
@@ -59,6 +59,7 @@ const xiaolong = new dog("xiaolonng");
 
 console.log(xiaolong.bark());
 
+//重写构造函数，在子类中必须调用super,不然报错,super 相当于把this指向改变为子类
 class cat extends admin {
   constructor(name) {
     super(name);
