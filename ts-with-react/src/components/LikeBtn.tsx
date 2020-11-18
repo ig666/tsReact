@@ -11,8 +11,9 @@ const LikeBtn:React.FC=()=>{
     const [like,setLike]=useState(0)
     const [on,setOn]=useState(true)
     useEffect(()=>{
+      console.log('join')
       document.title=`点击了${like}次`
-    })
+    },[like])  //每次修改State都会触发useEffect,但是可以通过第二个参数控制useEffect
     return(
     <>
       <button onClick={()=>{setLike(like+1)}}>{like}☝</button>

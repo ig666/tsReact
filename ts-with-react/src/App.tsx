@@ -3,8 +3,10 @@ import logo from "./logo.svg";
 import "./App.css";
 // import Hello from "./components/Hello";
 import LikeBtn from "./components/LikeBtn";
-import Position from './components/Position'
+import Position from "./components/Position";
+import usePositon from './hooks/useMousePositon'
 function App() {
+  const position=usePositon()
   return (
     <div className="App">
       <header className="App-header">
@@ -14,7 +16,10 @@ function App() {
         </p>
         {/* <Hello message="hello world2" /> */}
         {/* <LikeBtn /> */}
-        <Position />
+        {/* <Position /> */}
+        <p>
+          x:{position.x},y:{position.y}
+        </p>
         <a
           className="App-link"
           href="https://reactjs.org"

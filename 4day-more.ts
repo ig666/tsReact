@@ -20,7 +20,7 @@ function getName(n:NameOrResolver):string{
     }
 }
 
-//type assertion 类型断言
+//type assertion 类型别名
 
 function getLength(input:string | number):number{
     // input.length  input只能使用string | number 公有方法或属性，所以.length回报错
