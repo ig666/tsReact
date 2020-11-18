@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 // react中改变状态值是直接替换，所以要整个重新赋值
 /*
@@ -10,6 +10,9 @@ eg:const [like,setLike]=useState({val:2,on:true})
 const LikeBtn:React.FC=()=>{
     const [like,setLike]=useState(0)
     const [on,setOn]=useState(true)
+    useEffect(()=>{
+      document.title=`点击了${like}次`
+    })
     return(
     <>
       <button onClick={()=>{setLike(like+1)}}>{like}☝</button>

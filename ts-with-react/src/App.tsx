@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 // import Hello from "./components/Hello";
 import LikeBtn from "./components/LikeBtn";
-
+import Position from './components/Position'
 function App() {
   return (
     <div className="App">
@@ -13,7 +13,8 @@ function App() {
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
         {/* <Hello message="hello world2" /> */}
-        <LikeBtn />
+        {/* <LikeBtn /> */}
+        <Position />
         <a
           className="App-link"
           href="https://reactjs.org"

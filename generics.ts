@@ -63,13 +63,13 @@ let arr2: Array<number> = [1, 2, 3, 23, 123];
 
 //接口描述函数
 interface IPuls<T> {
-  (a: T, b: T): T;
+  (one: T, two: T): T;
 }
 function plus(a: number, b: number): number {
   return a + b;
 }
-function connect(a: string, b: string): string {
-  return a + b;
+function connect(a:string, b: string): string {
+  return  a+b;
 }
-const a: IPuls<number> = plus;
-const b: IPuls<string> = connect;
+const plusM: IPuls<number> = plus;
+const connectM: IPuls<string> = connect;
