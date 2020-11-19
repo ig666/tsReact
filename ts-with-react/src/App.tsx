@@ -1,12 +1,20 @@
-import React from "react";
+import React,{useState} from "react";
 import logo from "./logo.svg";
 import "./App.css";
 // import Hello from "./components/Hello";
 import LikeBtn from "./components/LikeBtn";
 import Position from "./components/Position";
 import usePositon from './hooks/useMousePositon'
+import useLoading from './hooks/useLoading'
+interface ImageDate {
+  message: string,
+  status: string
+}
 function App() {
-  const position=usePositon()
+  const [show,setShow]=useState(false)
+  const position = usePositon()
+  const [data, loading] = useLoading('https://dog.ceo/api/breeds/image/random', [show])
+  const dogData = data as ImageDate
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +25,8 @@ function App() {
         {/* <Hello message="hello world2" /> */}
         {/* <LikeBtn /> */}
         {/* <Position /> */}
+        <button onClick={()=>{setShow(!show)}}>切换图片</button>
+        {loading ? '🐕加载中....' : <img width='200px' src={dogData && dogData.message} alt="" />}
         <p>
           x:{position.x},y:{position.y}
         </p>
