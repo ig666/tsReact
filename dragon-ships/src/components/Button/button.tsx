@@ -1,4 +1,4 @@
-import React from "react";
+import React, { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 import classNames from "classnames";
 
 export enum ButtonSize {
@@ -22,22 +22,30 @@ interface BaseButtonProps {
   herf?: string;
 }
 
-const Button: React.FC<BaseButtonProps> = (props) => {
-  const { disabled, size, btnType, children, herf } = props;
-  const classes = classNames("btn", {
+//思考一个问题，怎么继承button a原有事件
+// & 交叉类型(直接合并两个类型),和 | 联合类型相反
+type NativeButtonProps=BaseButtonProps & ButtonHTMLAttributes<HTMLElement>
+type AnchorButtonProps=BaseButtonProps & AnchorHTMLAttributes<HTMLElement>
+
+// a和button标签都集成到ButtonProps,出现一个问题，a标签没有button标签属性和方法,TS提供Partial(所有属性换成可选)
+export type ButtonProps=Partial<NativeButtonProps & AnchorButtonProps>
+
+const Button: React.FC<ButtonProps> = (props) => {
+  const { className,disabled, size, btnType, children, herf, ...restProps} = props;
+  const classes = classNames("btn",className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
     disabled: btnType === ButtonType.Link && disabled,
   });
   if (btnType === ButtonType.Link && herf) {
     return (
-      <a className={classes} href={herf}>
+      <a {...restProps} className={classes} href={herf}>
         {children}
       </a>
     );
   } else {
     return (
-      <button className={classes} disabled={disabled}>
+      <button {...restProps} className={classes} disabled={disabled}>
         {children}
       </button>
     );

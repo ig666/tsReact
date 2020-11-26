@@ -5,11 +5,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Button>点击</Button>
-        <Button btnType={ButtonType.Primary} disabled>
-          点击
+        <Button onClick={()=>{console.log('xxx')}}>点击11</Button>
+        <Button size={ButtonSize.Large}>点击</Button>
+        <Button size={ButtonSize.Small} btnType={ButtonType.Danger}>点击</Button>
+        <Button btnType={ButtonType.Primary} >
+          点击试试
         </Button>
-        <Button btnType={ButtonType.Link} disabled herf="www.baidu.com">
+        <Button btnType={ButtonType.Link}  herf="www.baidu.com">
           点击
         </Button>
         <p>
