@@ -2,6 +2,7 @@ import React, { createContext, CSSProperties, useState } from "react";
 import classNames from "classnames";
 
 type MenuMode = "horizontal" | "vertical";
+type OnselecTCallback = (selectedIndex: string) => void;
 export interface MenuProps {
   /**默认 active 的菜单项的索引值 */
   defaultIndex?: string;
@@ -10,11 +11,11 @@ export interface MenuProps {
   mode?: MenuMode;
   style?: CSSProperties;
   /**点击菜单项触发的回掉函数 */
-  onSelect?: (selectedIndex: string) => void;
+  onSelect?: OnselecTCallback
 }
 interface IMenuContext {
   index: string;
-  onSelect?: (selectedIndex: string) => void;
+  onSelect?: OnselecTCallback
 }
 
 export const MenuContext = createContext<IMenuContext>({ index: "0" });

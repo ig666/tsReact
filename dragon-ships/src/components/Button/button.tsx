@@ -6,7 +6,7 @@ import classNames from "classnames";
 //   Small = "sm",
 // }
 
- type ButtonSize = 'lg' | 'sm'
+type ButtonSize = 'lg' | 'sm'
 
 // export enum ButtonType {
 //   Primary = "primary",
@@ -15,14 +15,17 @@ import classNames from "classnames";
 //   Link = "link",
 // }
 
- type ButtonType = 'primary' | 'default' | 'danger' | 'link'
+type ButtonType = 'primary' | 'default' | 'danger' | 'link'
 interface BaseButtonProps {
   className?: string;
+  /**设置 Button 的禁用 */
   disabled?: boolean;
+  /**设置 Button 的尺寸 */
   size?: ButtonSize;
+  /**设置 Button 的类型 */
   btnType?: ButtonType;
   children: React.ReactNode;
-  herf?: string;
+  href?: string;
 }
 
 //思考一个问题，怎么继承button a原有事件
@@ -34,15 +37,15 @@ type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const { className, disabled, size, btnType, children, herf, ...restProps } = props;
+  const { className, disabled, size, btnType, children, href, ...restProps } = props;
   const classes = classNames("btn", className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
     disabled: btnType === 'link' && disabled,
   });
-  if (btnType === 'link' && herf) {
+  if (btnType === 'link' && href) {
     return (
-      <a {...restProps} className={classes} href={herf}>
+      <a {...restProps} className={classes} href={href}>
         {children}
       </a>
     );
