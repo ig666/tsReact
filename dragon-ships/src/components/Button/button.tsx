@@ -1,18 +1,21 @@
 import React, { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 import classNames from "classnames";
 
-export enum ButtonSize {
-  Large = "lg",
-  Small = "sm",
-}
+// export enum ButtonSize {
+//   Large = "lg",
+//   Small = "sm",
+// }
 
-export enum ButtonType {
-  Primary = "primary",
-  Default = "default",
-  Danger = "danger",
-  Link = "link",
-}
+ type ButtonSize = 'lg' | 'sm'
 
+// export enum ButtonType {
+//   Primary = "primary",
+//   Default = "default",
+//   Danger = "danger",
+//   Link = "link",
+// }
+
+ type ButtonType = 'primary' | 'default' | 'danger' | 'link'
 interface BaseButtonProps {
   className?: string;
   disabled?: boolean;
@@ -24,20 +27,20 @@ interface BaseButtonProps {
 
 //思考一个问题，怎么继承button a原有事件
 // & 交叉类型(直接合并两个类型),和 | 联合类型相反
-type NativeButtonProps=BaseButtonProps & ButtonHTMLAttributes<HTMLElement>
-type AnchorButtonProps=BaseButtonProps & AnchorHTMLAttributes<HTMLElement>
+type NativeButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLElement>
+type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>
 
 // a和button标签都集成到ButtonProps,出现一个问题，a标签没有button标签属性和方法,TS提供Partial(所有属性换成可选)
-export type ButtonProps=Partial<NativeButtonProps & AnchorButtonProps>
+export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const { className,disabled, size, btnType, children, herf, ...restProps} = props;
-  const classes = classNames("btn",className, {
+  const { className, disabled, size, btnType, children, herf, ...restProps } = props;
+  const classes = classNames("btn", className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
-    disabled: btnType === ButtonType.Link && disabled,
+    disabled: btnType === 'link' && disabled,
   });
-  if (btnType === ButtonType.Link && herf) {
+  if (btnType === 'link' && herf) {
     return (
       <a {...restProps} className={classes} href={herf}>
         {children}
@@ -54,7 +57,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 
 Button.defaultProps = {
   disabled: false,
-  btnType: ButtonType.Default,
+  btnType: 'default',
 };
 
 export default Button;

@@ -1,17 +1,17 @@
 import React from "react";
-import Button, { ButtonSize, ButtonType } from "./components/Button/button";
+import Button from "./components/Button/button";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Button onClick={()=>{console.log('xxx')}}>点击11</Button>
-        <Button size={ButtonSize.Large}>点击</Button>
-        <Button size={ButtonSize.Small} btnType={ButtonType.Danger}>点击</Button>
-        <Button btnType={ButtonType.Primary} >
+        <Button onClick={() => { console.log('xxx') }}>点击11</Button>
+        <Button size={'lg'}>点击</Button>
+        <Button size={'sm'} btnType={'danger'} >点击</Button>
+        <Button btnType={'primary'} >
           点击试试
         </Button>
-        <Button btnType={ButtonType.Link}  herf="www.baidu.com">
+        <Button btnType={'link'} herf="www.baidu.com">
           点击
         </Button>
         <p>
