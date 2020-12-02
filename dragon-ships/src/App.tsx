@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./components/Button/button";
 import MenuItem from "./components/Menu/menuItem";
-import Menu from "./components/Menu/subMenu";
+import Menu from "./components/Menu/menu";
 
 function App() {
   return (
@@ -15,9 +15,9 @@ function App() {
         </Button>
         <Button btnType={'link'} href="www.baidu.com">link</Button>
         <Menu mode={'vertical'}>
-          <MenuItem index='0'>0</MenuItem>
-          <MenuItem index='1' disabled>1</MenuItem>
-          <MenuItem index='2'>2</MenuItem>
+          <MenuItem >0</MenuItem>
+          <MenuItem disabled>1</MenuItem>
+          <MenuItem >2</MenuItem>
         </Menu>
       </header>
     </div>
