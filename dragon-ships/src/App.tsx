@@ -2,6 +2,7 @@ import React from "react";
 import Button from "./components/Button/button";
 import MenuItem from "./components/Menu/menuItem";
 import Menu from "./components/Menu/menu";
+import SubMenu from './components/Menu/subMenu'
 
 function App() {
   return (
@@ -18,6 +19,11 @@ function App() {
           <MenuItem >0</MenuItem>
           <MenuItem disabled>1</MenuItem>
           <MenuItem >2</MenuItem>
+          <SubMenu text='subMenu'>
+            <MenuItem >01111</MenuItem>
+            <MenuItem disabled>11111</MenuItem>
+            <MenuItem >2111</MenuItem>
+          </SubMenu>
         </Menu>
       </header>
     </div>
