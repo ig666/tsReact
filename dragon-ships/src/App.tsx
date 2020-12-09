@@ -5,14 +5,11 @@ import Button from "./components/Button/button";
 import MenuItem from "./components/Menu/menuItem";
 import Menu from "./components/Menu/menu";
 import SubMenu from './components/Menu/subMenu'
-import Icon from './components/Icon/Icon'
 library.add(fas)
-
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Icon icon='baseball-ball'  spin size='10x' />
         <Button>点击11</Button>
         <Button size={'lg'}>点击</Button>
         <Button size={'sm'} btnType={'danger'} >点击</Button>

@@ -39,7 +39,18 @@
     &:hover {
       .arrow-icon {
         transform: rotate(180deg);
+        color: $primary;
       }
+    }
+  }
+  .is-vertical {
+    .arrow-icon {
+      transform: rotate(0deg) !important;
+    }
+  }
+  .is-vertical.is-opened {
+    .arrow-icon {
+      transform: rotate(180deg) !important;
     }
   }
   .viking-submenu {
