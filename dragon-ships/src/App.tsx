@@ -17,7 +17,7 @@ function App() {
           点击试试
         </Button>
         <Button btnType={'link'} href="www.baidu.com">link</Button>
-        <Menu mode={'vertical'}>
+        <Menu mode={'horizontal'}>
           <MenuItem >0</MenuItem>
           <MenuItem disabled>1</MenuItem>
           <MenuItem >2</MenuItem>

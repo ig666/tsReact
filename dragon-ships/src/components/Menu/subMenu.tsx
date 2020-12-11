@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import classNames from "classnames";
-import { CSSTransition } from 'react-transition-group'
 import { MenuContext } from "./menu";
 import { MenuItemProps } from './menuItem'
 import Icon from '../Icon/Icon'
+import Transtion from '../Transiton'
 
 
 export interface subMenuProps {
@@ -47,7 +47,7 @@ const SubMenu: React.FC<subMenuProps> = (props) => {
         onClick: (e: React.MouseEvent) => { handleClick(e, !menuOpen) }
     } : ''
     const childRender = () => {
-        return React.Children.map(children, (child, i) => {
+        const childrenComponent = React.Children.map(children, (child, i) => {
             let childElement = child as React.FunctionComponentElement<MenuItemProps>
             if (childElement.type.displayName === 'menuItem') {
                 return React.cloneElement(childElement, { index: `${index}-${i}` })
@@ -55,6 +55,17 @@ const SubMenu: React.FC<subMenuProps> = (props) => {
                 console.error("Warning: Menu has a child which is not a MenuItem component")
             }
         })
+        return (
+            <Transtion
+                in={menuOpen}
+                timeout={300}
+                animation='zoom-in-left'
+            >
+                <ul  className={subMenuClasses}>
+                    {childrenComponent}
+                </ul>
+            </Transtion>
+        )
     }
 
     return (
@@ -63,9 +74,7 @@ const SubMenu: React.FC<subMenuProps> = (props) => {
                 {text}
                 <Icon className="arrow-icon" icon='angle-down' theme='secondary' />
             </div>
-            <ul className={subMenuClasses} >
-                {childRender()}
-            </ul>
+            {childRender()}
         </li>
     )
 }
