@@ -26,6 +26,7 @@ interface BaseButtonProps {
   btnType?: ButtonType;
   children: React.ReactNode;
   href?: string;
+  onClick?: () => void;
 }
 
 //思考一个问题，怎么继承button a原有事件
@@ -36,7 +37,7 @@ type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>
 // a和button标签都集成到ButtonProps,出现一个问题，a标签没有button标签属性和方法,TS提供Partial(所有属性换成可选)
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
 
-const Button: React.FC<ButtonProps> = (props) => {
+export const Button: React.FC<ButtonProps> = (props) => {
   const { className, disabled, size, btnType, children, href, ...restProps } = props;
   const classes = classNames("btn", className, {
     [`btn-${btnType}`]: btnType,
@@ -63,4 +64,3 @@ Button.defaultProps = {
   btnType: 'default',
 };
 
-export default Button;
