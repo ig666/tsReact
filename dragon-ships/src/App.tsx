@@ -3,7 +3,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import {Button} from "./components/Button/button";
 import MenuItem from "./components/Menu/menuItem";
-import Menu from "./components/Menu/menu";
+import {Menu} from "./components/Menu/menu";
 import SubMenu from './components/Menu/subMenu'
 library.add(fas)
 function App() {

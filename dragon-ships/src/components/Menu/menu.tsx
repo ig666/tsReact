@@ -22,7 +22,7 @@ interface IMenuContext {
 
 export const MenuContext = createContext<IMenuContext>({ index: '0' });
 
-const Menu: React.FC<MenuProps> = (props) => {
+export const Menu: React.FC<MenuProps> = (props) => {
   const { defaultIndex, className, mode, style, onSelect, children } = props;
   const [currentActive, setActive] = useState(defaultIndex);
 
@@ -65,4 +65,3 @@ Menu.defaultProps = {
   defaultIndex: '0',
   mode: "horizontal",
 };
-export default Menu;
