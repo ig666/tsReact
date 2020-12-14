@@ -14,7 +14,8 @@ const Template: Story<InputProps> = (args) => <Input {...args} />;
 export const Large = Template.bind({});
 Large.args = {
   size:'lg',
-  icon:'address-card'
+  icon:'address-card',
+  prepend:<div>你猜猜</div>
 };
 
 export const Small = Template.bind({});

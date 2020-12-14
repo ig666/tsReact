@@ -3,7 +3,7 @@ module.exports = {
     "./*.stories.mdx",
     "../src/**/*.stories.@(js|jsx|ts|tsx)"
   ],
-  addons: ['@storybook/preset-scss'],
+  addons:["@storybook/preset-scss"],
   "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
