@@ -1,10 +1,10 @@
-import React, { FC, ReactElement, InputHTMLAttributes, ChangeEvent } from 'react'
+import React, { FC, ReactElement, InputHTMLAttributes } from 'react'
 import classNames from 'classnames'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import Icon from '../Icon/Icon'
 
 type InputSize = 'lg' | 'sm'
-export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size' > {
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' > {
   /**是否禁用 Input */
   disabled?: boolean;
   /**设置 input 大小，支持 lg 或者是 sm */
@@ -15,7 +15,6 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size
   prepend?: string | ReactElement;
   /**添加后缀 用于配置一些固定组合 */
   append?: string | ReactElement;
-  onChange? : (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 /**
