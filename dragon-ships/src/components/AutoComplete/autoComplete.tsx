@@ -1,23 +1,57 @@
-import React, { useState } from 'react'
-import Input, { InputProps } from '../Input/input'
+import React, { useState } from "react";
+import Input, { InputProps } from "../Input/input";
 
-interface AutoCompleteProps extends Omit<InputProps, 'onSelect'> {
-    onSelect?: (value: string) => void,
-    filterChange?:(value: string,option:string[]) => void,
+export interface AutoCompleteProps extends Omit<InputProps, "onSelect"> {
+  onSelect?: (value: string) => void;
+  filterChange: (value: string) => string[];
 }
 
 export const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
-    const [value,setvalue]=useState('')
-    const option = ['long', 'qi', '@12']
-    const { onSelect,filterChange } = props
-    const filterOption=(value:string)=>{
-        if(filterChange){
-            let str=filterChange(value,option)
-            console.log(str,value,'value====>>>')
-            setvalue(value)
-        }
+  const [value, setvalue] = useState("");
+  const [option, setOption] = useState<string[]>([]);
+  const { onSelect, filterChange, ...resetProps } = props;
+  const handChange = (value: string) => {
+    setvalue(value);
+    if (value) {
+      let strArr = filterChange(value);
+      setOption(strArr);
+    } else {
+      setOption([]);
     }
+  };
+  const handRender = () => {
     return (
-        <Input value={value} onChange={(e)=>{filterOption(e.target.value)}}></Input>
-    )
-}
+      <ul>
+        {option.map((item, index) => (
+          <li
+            onClick={() => {
+              handSelect(item);
+            }}
+            key={index}
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+  const handSelect = (item: string) => {
+    setvalue(item);
+    setOption([]);
+    if (onSelect) {
+      onSelect(item);
+    }
+  };
+  return (
+    <div className="viking-suggestion">
+      <Input
+        {...resetProps}
+        value={value}
+        onChange={(e) => {
+          handChange(e.target.value);
+        }}
+      ></Input>
+      {option && handRender()}
+    </div>
+  );
+};
