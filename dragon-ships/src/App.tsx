@@ -6,12 +6,14 @@ import MenuItem from "./components/Menu/menuItem";
 import { Menu } from "./components/Menu/menu";
 import SubMenu from "./components/Menu/subMenu";
 import { AutoComplete } from "./components/AutoComplete/autoComplete";
+import { Upload} from './components/Upload/upload'
 library.add(fas);
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Button>点击11</Button>
+        <Upload></Upload>
+        {/* <Button>点击11</Button>
         <Button size={"lg"}>点击</Button>
         <Button size={"sm"} btnType={"danger"}>
           点击
@@ -29,7 +31,7 @@ function App() {
             <MenuItem disabled>11111</MenuItem>
             <MenuItem>2111</MenuItem>
           </SubMenu>
-        </Menu>
+        </Menu> */}
       </header>
     </div>
   );
