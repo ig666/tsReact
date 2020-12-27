@@ -6,13 +6,15 @@ import MenuItem from "./components/Menu/menuItem";
 import { Menu } from "./components/Menu/menu";
 import SubMenu from "./components/Menu/subMenu";
 import { AutoComplete } from "./components/AutoComplete/autoComplete";
-import { Upload} from './components/Upload/upload'
+import { Upload } from "./components/Upload/upload";
 library.add(fas);
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Upload></Upload>
+        <Upload
+          action="https://run.mocky.io/v3/ecfef45c-07f5-4e6f-ac77-d2d87f9aa1d1"
+        ></Upload>
         {/* <Button>点击11</Button>
         <Button size={"lg"}>点击</Button>
         <Button size={"sm"} btnType={"danger"}>
