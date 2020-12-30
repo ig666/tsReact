@@ -64,3 +64,4 @@ Button.defaultProps = {
   btnType: 'default',
 };
 
+export default Button

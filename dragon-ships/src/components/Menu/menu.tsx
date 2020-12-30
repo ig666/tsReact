@@ -65,3 +65,5 @@ Menu.defaultProps = {
   defaultIndex: '0',
   mode: "horizontal",
 };
+
+export default Menu
